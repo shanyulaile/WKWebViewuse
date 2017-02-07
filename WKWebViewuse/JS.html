@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JS和OC交互</title>
+    <style>
+        .btn {
+            margin: 10px 20%;
+            border: 2px solid deepskyblue;
+            border-radius:25px;
+            background-color: deepskyblue;
+            font-size: 5em;
+            color: white;
+            width: 60%;
+            height:160px;
+        }
+    </style>
+    <script>
+//      OC调用JS的方法
+        function altrtmethod() {
+            alert('这是OC调用JS的alert方法');
+        }
+
+        function confirmmethod() {
+            confirm('注意确认','这是OC调用JS的confirm方法');
+        }
+
+        function promotmethod() {
+            var response = prompt('亲，你好','请输你的名字');
+            document.getElementById('jsParamFuncSpan').innerHTML = response;
+        }
+
+//      JS响应方法列表
+        function telphonebtn() {
+            window.webkit.messageHandlers.telphone.postMessage('15670456080')
+        }
+
+        function makephotobtn() {
+            window.webkit.messageHandlers.makephoto.postMessage(null)
+        }
+
+        function nextpagebtn() {
+            window.webkit.messageHandlers.nextpage.postMessage('http://www.jianshu.com')
+        }
+
+
+    </script>
+</head>
+<body>
+        <div>
+            <button class="btn" type="button" onclick="nextpagebtn()">下一页</button>
+        </div>
+        <br/>
+
+        <div>
+            <button class="btn" type="button" onclick="telphonebtn()">打电话</button>
+        </div>
+        <br/>
+
+        <div>
+            <button class="btn" type="button" onclick="makephotobtn()">拍照</button>
+        </div>
+</body>
+</html>
